@@ -5,30 +5,29 @@ using UnityEngine.InputSystem;
 public class PlayerController : MonoBehaviour
 {
     // Start is called before the first frame update
+    public float speed = 0;
     private Rigidbody rb;
-    private float movementX
-    private float movementY
+    private float movementX;
+    private float movementY;
 
-    void Start(InputValue movementValue)
+    void Start()
     {
-        rb = GetComponent<Rigidbody>;
+        rb = GetComponent<Rigidbody>();
          
             
-        }
-         void OnMove[]
-         {
-            Vector2 movementVector = movementValue.get <Vector2>;
-            movementX = movementVector.X;    
-            movementY = movementVector.Y;
-         }
     }
+    void OnMove(InputValue movementValue)
+    {
+        Vector2 movementVector = movementValue.Get<Vector2>();
+        movementX = movementVector.x;    
+        movementY = movementVector.y;
+    }
+    
 
     void FixedUpdate()
     {
-        Vector3 movement = new Vector3[movementX 0.0f movementY];
-        rb.AddForce;
-
-
+        Vector3 movement = new Vector3(movementX, 0.0f, movementY);
+        rb.AddForce(movement * speed);
     }
 
     // Update is called once per frame
